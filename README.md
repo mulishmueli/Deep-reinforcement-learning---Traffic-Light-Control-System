@@ -1,41 +1,5 @@
 # Deep-reinforcement-learning---Traffic-Light-Control-System
 
-Deep Q-Learning Agent for Traffic Signal Control
-A framework where a deep Q-Learning Reinforcement Learning agent tries to choose the correct traffic light phase at an intersection to maximize traffic efficiency.
-
-I have uploaded this here to help anyone searching for a good starting point for deep reinforcement learning with SUMO. This code is extracted from my master thesis, and it represents a simplified version of the code used for my thesis work. I hope you can find this repository useful for your project.
-
-Getting Started
-These instructions will get you a copy of the project up and running on your local machine. In my opinion, the following are the easiest steps in order to run the algorithm from scratch, with the least amount of effort. A computer with an NVIDIA GPU is strongly recommended.
-
-Download Anaconda (official site) and install.
-Download SUMO (official site) and install.
-Follow this short guide to install tensorflow-gpu correctly and problem-free. In short, the guide tells you to open Anaconda Prompt, or any terminal, and type the following commands:
-conda create --name tf_gpu
-activate tf_gpu
-conda install tensorflow-gpu
-I've used the following software versions: Python 3.7, SUMO traffic simulator 1.2.0, tensorflow 2.0
-
-Running the algorithm
-Clone or download the repo.
-Using the Anaconda prompt or any other terminal, navigate to the root folder and run the file training_main.py by executing:
-python training_main.py
-Now the agent should start the training.
-
-You don't need to open any SUMO software since everything is loaded and done in the background. If you want to see the training process as it goes, you need to set to True the parameter gui contained in the file training_settings.ini. Keep in mind that viewing the simulation is very slow compared to the background training, and you also need to close SUMO-GUI every time an episode ends, which is not practical.
-
-The file training_settings.ini contains all the different parameters used by the agent in the simulation. The default parameters aren't greatly optimized, so a bit of testing will likely increase the algorithm's current performance.
-
-When the training ends, the results will be stored in "./model/model_x/" where x is an increasing integer starting from 1, generated automatically. Results will include some graphs, the data used to create the graphs, the trained neural network, and a copy of the ini file where the agent settings are.
-
-Now you can finally test the trained agent. To do so, you have to run the file testing_main.py. The test involves a single episode of simulation, and the results of the test will be stored in "./model/model_x/test/" where x is the number of the model that you specified to test. The number of the model to test and other useful parameters are contained in the file testing_settings.ini.
-
-Training time: ~27 seconds per episode, 45min for 100 episodes, on a computer equipped with i7-3770K, 8GB RAM, NVIDIA GTX 970, SSD.
-
-The code structure
-The main file is training_main.py. It handles the main loop that starts an episode on every iteration. It also saves the network weights and three plots: negative reward, cumulative wait time, and average queues.
-
-Overall the algorithm is divided into classes that handle different parts of the training.
 
 The Model class defines everything about the deep neural network, and it also contains some functions used to train the network and predict the outputs. In the model.py file, two different model classes are defined: one used only during the training and only during the testing.
 The Memory class handle the memorization for the experience replay mechanism. A function adds a sample into the memory, while another function retrieves a batch of samples from the memory.
@@ -45,7 +9,7 @@ The Visualization class is just used for plotting data.
 The utils.py file contains some directory-related functions, such as automatically handling the creations of new model versions and the loading of existing models for testing.
 In the "intersection" folder, there is a file called environment.net.xml, which defines the environment's structure, and it was created using SUMO NetEdit. The other file sumo_config.sumocfg it is a linker between the environment file and the route file.
 
-The settings explained
+# The settings explained
 The settings used during the training and contained in the file training_settings.ini are the following:
 
 gui: enable or disable the SUMO interface during the simulation.
