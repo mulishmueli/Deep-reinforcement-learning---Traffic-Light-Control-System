@@ -163,7 +163,12 @@ def detect(save_img=False):
             ref_frame_label = cur_frame_label
             ref_frame_axies = cur_frame_axies
 
+            fps=1/(t2 - t1)
+
             print(f'{s}Done. ({t2 - t1:.3f}s)')
+            cv2.putText(im0, f'FPS- {fps:.0f}  ', (50, 30), cv2.FONT_HERSHEY_SIMPLEX, 1,
+                        (0, 255, 255), 2,
+                        cv2.LINE_4)
             cv2.putText(im0, f'count of vehicle- {total_vehicle}  ', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1,
                         (0, 255, 255), 2,
                         cv2.LINE_4)
@@ -181,11 +186,10 @@ def detect(save_img=False):
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
-                cv2.waitKey(25)  # 1 millisecond
+                cv2.waitKey(int((t2 - t1)*1000))  # 1 millisecond
 
 
     print(f'Done. ({time.time() - t0:.3f}s)')
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
