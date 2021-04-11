@@ -20,6 +20,8 @@ def detect(save_img=False):
     ref_frame_label= []
     cur_frame_axies = []
     cur_frame_label = []
+    t_pre =0
+    speed = 0
 
     min_distance = 50
     pixel_distance_in_meter = 0.024 #car length 4.5m resulation 1280*720
@@ -58,7 +60,7 @@ def detect(save_img=False):
     # Run inference
     if device.type != 'cpu':
         model(torch.zeros(1, 3, imgsz, imgsz).to(device).type_as(next(model.parameters())))  # run once
-    t0 = time.time()
+
 
     for path, img, im0s, vid_cap in dataset:
         road_a = 0
@@ -67,6 +69,8 @@ def detect(save_img=False):
         road_d = 0
         total_person = 0
         total_vehicle = 0
+
+
         img = torch.from_numpy(img).to(device)
         img = img.half() if half else img.float()  # uint8 to fp16/32
         img /= 255.0  # 0 - 255 to 0.0 - 1.0
@@ -137,6 +141,9 @@ def detect(save_img=False):
                             num_of_object = ref_frame_label[idx]
                             if (num_of_object in cur_frame_label):
                                 num_of_object=0
+                            else:
+                                t_delta = t2 - t1
+                                speed=min_value*0.01*pixel_distance_in_meter*t_delta*3600
                     if (not (num_of_object)):
                         if (len(cur_frame_label)):
                             for j in range(1, max(cur_frame_label) + 2):
@@ -148,7 +155,8 @@ def detect(save_img=False):
                     cur_frame_label.append(num_of_object)
                     cur_frame_axies.append((int(xyxy[0]), int(xyxy[1])))
 
-                    label = f'{names[int(cls)]} {conf:.2f} {num_of_object}'
+
+                    label = f'{names[int(cls)]} {conf:.2f} {num_of_object} {speed:.0f}km/h'
                     plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=3)
 
             # Print time (inference + NMS)
@@ -173,7 +181,7 @@ def detect(save_img=False):
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
-                cv2.waitKey(60)  # 1 millisecond
+                cv2.waitKey(25)  # 1 millisecond
 
 
     print(f'Done. ({time.time() - t0:.3f}s)')
