@@ -186,10 +186,10 @@ def detect(save_img=False):
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
-                cv2.waitKey(int((t2 - t1)*1000))  # 1 millisecond
+                cv2.waitKey(40)  # 1 millisecond
+                #time.sleep(0.06)
 
 
-    print(f'Done. ({time.time() - t0:.3f}s)')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
