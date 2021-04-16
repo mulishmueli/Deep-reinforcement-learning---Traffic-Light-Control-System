@@ -42,8 +42,7 @@ class TrafficGenerator:
             <route id="E_N" edges="E2TL TL2N"/>
             <route id="E_S" edges="E2TL TL2S"/>
             <route id="S_W" edges="S2TL TL2W"/>
-            <route id="S_N" edges="S2TL TL2N"/>
-            <route id="S_E" edges="S2TL TL2E"/>""", file=routes)
+            <route id="S_N" edges="S2TL TL2N"/>""", file=routes)
 
             for car_counter, step in enumerate(car_gen_steps):
                 straight_or_turn = np.random.uniform()
@@ -73,7 +72,6 @@ class TrafficGenerator:
                         print('    <vehicle id="E_S_%i" type="standard_car" route="E_S" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
                     elif route_turn == 7:
                         print('    <vehicle id="S_W_%i" type="standard_car" route="S_W" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    elif route_turn == 8:
-                        print('    <vehicle id="S_E_%i" type="standard_car" route="S_E" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+
 
             print("</routes>", file=routes)
