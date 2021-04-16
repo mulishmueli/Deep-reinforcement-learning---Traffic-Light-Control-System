@@ -126,14 +126,14 @@
     </edge>
 
     <tlLogic id="TL" type="static" programID="0" offset="0">
-        <phase duration="24" state="rrrGGGgrrrGGGg"/>
-        <phase duration="3"  state="rrryyygrrryyyg"/>
-        <phase duration="6"  state="rrrrrrGrrrrrrG"/>
-        <phase duration="3"  state="rrrrrryrrrrrry"/>
-        <phase duration="24" state="rrrrrrrGGGGrrr"/>
-        <phase duration="3"  state="rrrrrrryyyyrrr"/>
-        <phase duration="24" state="GGGGrrrrrrrrrr"/>
-        <phase duration="3"  state="yyyyrrrrrrrrrr"/>
+        <phase duration="24" state="GrrGGGgrrrGGGg"/>
+        <phase duration="3"  state="GrrGyygrrrGyyg"/>
+        <phase duration="6"  state="GrrGrrGrrrGrrG"/>
+        <phase duration="3"  state="GrrGrryrrrGrry"/>
+        <phase duration="24" state="GrrGrrrGGGGrrr"/>
+        <phase duration="3"  state="GrrGrrryyyGrrr"/>
+        <phase duration="24" state="GGGGrrrrrrGrrr"/>
+        <phase duration="3"  state="GyyGrrrrrrGrrr"/>
     </tlLogic>
 
     <junction id="DE" type="dead_end" x="750.00" y="0.00" incLanes="TL2E_0 TL2E_1 TL2E_2" intLanes="" shape="750.00,0.00 750.00,-9.60 750.00,0.00"/>
