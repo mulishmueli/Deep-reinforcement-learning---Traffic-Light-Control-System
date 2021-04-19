@@ -5,14 +5,26 @@ import timeit
 import os
 
 # phase codes based on environment.net.xml
-PHASE_NS_GREEN = 0  # action 0 code 00
-PHASE_NS_YELLOW = 1
-PHASE_NSL_GREEN = 2  # action 1 code 01
-PHASE_NSL_YELLOW = 3
-PHASE_EW_GREEN = 4  # action 2 code 10
-PHASE_EW_YELLOW = 5
-PHASE_EWL_GREEN = 6  # action 3 code 11
-PHASE_EWL_YELLOW = 7
+PHASE_0 = 0  # action 0 code 00
+PHASE_1 = 1
+PHASE_2 = 2  # action 1 code 01
+PHASE_3 = 3
+PHASE_4 = 4  # action 2 code 10
+PHASE_5 = 5
+PHASE_6 = 6  # action 3 code 11
+PHASE_7 = 7
+PHASE_8 = 8  # action 0 code 00
+PHASE_9 = 9
+PHASE_10 = 10  # action 1 code 01
+PHASE_11 = 11
+PHASE_12 = 12  # action 2 code 10
+PHASE_13 = 13
+PHASE_14 = 14  # action 3 code 11
+PHASE_15 = 15
+PHASE_16 = 16  # action 0 code 00
+PHASE_17 = 17
+PHASE_18 = 18  # action 1 code 01
+PHASE_19 = 19  # action 1 code 01
 
 
 class Simulation:
@@ -73,9 +85,9 @@ class Simulation:
             action = self._choose_action(current_state, epsilon)
 
             # if the chosen phase is different from the last phase, activate the yellow phase
-            if self._step != 0 and old_action != action:
+            '''if self._step != 0 and old_action != action:
                 self._set_yellow_phase(old_action)
-                self._simulate(self._yellow_duration)
+                self._simulate(self._yellow_duration)'''
 
             # execute the phase selected before
             self._set_green_phase(action)
@@ -148,12 +160,12 @@ class Simulation:
             return np.argmax(self._Model.predict_one(state)) # the best action given the current state
 
 
-    def _set_yellow_phase(self, old_action):
+    '''def _set_yellow_phase(self, old_action):
         """
         Activate the correct yellow light combination in sumo
         """
         yellow_phase_code = old_action * 2 + 1 # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
-        traci.trafficlight.setPhase("TL", yellow_phase_code)
+        traci.trafficlight.setPhase("TL", yellow_phase_code)'''
 
 
     def _set_green_phase(self, action_number):
@@ -161,13 +173,45 @@ class Simulation:
         Activate the correct green light combination in sumo
         """
         if action_number == 0:
-            traci.trafficlight.setPhase("TL", PHASE_NS_GREEN)
+            traci.trafficlight.setPhase("TL", PHASE_0)
         elif action_number == 1:
-            traci.trafficlight.setPhase("TL", PHASE_NSL_GREEN)
+            traci.trafficlight.setPhase("TL", PHASE_1)
         elif action_number == 2:
-            traci.trafficlight.setPhase("TL", PHASE_EW_GREEN)
+            traci.trafficlight.setPhase("TL", PHASE_2)
         elif action_number == 3:
-            traci.trafficlight.setPhase("TL", PHASE_EWL_GREEN)
+            traci.trafficlight.setPhase("TL", PHASE_3)
+        elif action_number == 4:
+            traci.trafficlight.setPhase("TL", PHASE_4)
+        elif action_number == 5:
+            traci.trafficlight.setPhase("TL", PHASE_5)
+        elif action_number == 6:
+            traci.trafficlight.setPhase("TL", PHASE_6)
+        elif action_number == 7:
+            traci.trafficlight.setPhase("TL", PHASE_7)
+        elif action_number == 8:
+            traci.trafficlight.setPhase("TL", PHASE_8)
+        elif action_number == 9:
+            traci.trafficlight.setPhase("TL", PHASE_9)
+        elif action_number == 10:
+            traci.trafficlight.setPhase("TL", PHASE_10)
+        elif action_number == 11:
+            traci.trafficlight.setPhase("TL", PHASE_11)
+        elif action_number == 12:
+            traci.trafficlight.setPhase("TL", PHASE_12)
+        elif action_number == 13:
+            traci.trafficlight.setPhase("TL", PHASE_13)
+        elif action_number == 14:
+            traci.trafficlight.setPhase("TL", PHASE_14)
+        elif action_number == 15:
+            traci.trafficlight.setPhase("TL", PHASE_15)
+        elif action_number == 16:
+            traci.trafficlight.setPhase("TL", PHASE_16)
+        elif action_number == 17:
+            traci.trafficlight.setPhase("TL", PHASE_17)
+        elif action_number == 18:
+            traci.trafficlight.setPhase("TL", PHASE_18)
+        elif action_number == 19:
+            traci.trafficlight.setPhase("TL", PHASE_19)
 
 
     def _get_queue_length(self):
