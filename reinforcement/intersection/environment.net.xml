@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 04/20/21 15:01:18 by Eclipse SUMO netedit Version 1.8.0
+<!-- generated on 04/20/21 15:13:53 by Eclipse SUMO netedit Version 1.8.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
@@ -120,22 +120,22 @@
     </edge>
 
     <tlLogic id="TL" type="static" programID="0" offset="0">
-        <phase duration="100" state="GrrGGGrrrrGGGr"/>
-        <phase duration="40" state="GrrGyyrrrrGyyr"/>
+        <phase duration="100" state="rrrGGGrrrrGGGr"/>
+        <phase duration="40" state="rrrGyyrrrrGyyr"/>
         <phase duration="100" state="GrrGrrrrrrGGGG"/>
         <phase duration="40" state="GrrGrrrrrrGyyy"/>
         <phase duration="100" state="GrrGrrGrrrGrrG"/>
         <phase duration="40" state="GrrGrryrrrGrry"/>
-        <phase duration="100" state="GrrGrrrGGGGrrr"/>
-        <phase duration="40" state="GrrGrrryyyGrrr"/>
+        <phase duration="100" state="GrrrrrrGGGGrrr"/>
+        <phase duration="40" state="GrrrrrryyyGrrr"/>
         <phase duration="100" state="GrGGrrrrGGGrrr"/>
         <phase duration="40" state="GryGrrrryyGrrr"/>
-        <phase duration="100" state="GGGGrrrrrrGrrr"/>
-        <phase duration="40" state="GyyGrrrrrrGrrr"/>
+        <phase duration="100" state="GGGGrrrrrrrrrr"/>
+        <phase duration="40" state="GyyGrrrrrrrrrr"/>
         <phase duration="100" state="GrGGrrrrrGGrrr"/>
         <phase duration="40" state="GryGrrrrryGrrr"/>
-        <phase duration="100" state="GrrGGGGrrrGrrr"/>
-        <phase duration="40" state="GrrGyyyrrrGrrr"/>
+        <phase duration="100" state="rrrGGGGrrrGrrr"/>
+        <phase duration="40" state="rrrGyyyrrrGrrr"/>
     </tlLogic>
 
     <junction id="DE" type="dead_end" x="750.00" y="0.00" incLanes="TL2E_0 TL2E_1 TL2E_2" intLanes="" shape="750.00,0.00 750.00,-9.60 750.00,0.00"/>

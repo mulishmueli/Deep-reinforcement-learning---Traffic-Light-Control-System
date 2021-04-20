@@ -5,21 +5,22 @@ import timeit
 import os
 
 # phase codes based on environment.net.xml
-PHASE_0 = 0  # action 0 code 00
-PHASE_1 = 1
-PHASE_2 = 2  # action 1 code 01
-PHASE_3 = 3
-PHASE_4 = 4  # action 2 code 10
-PHASE_5 = 5
-PHASE_6 = 6  # action 3 code 11
-PHASE_7 = 7
-PHASE_8 = 8  # action 0 code 00
-PHASE_9 = 9
-PHASE_10 = 10  # action 1 code 01
-PHASE_11 = 11
-PHASE_12 = 12  # action 2 code 10
-PHASE_13 = 13
-PHASE_14 = 14  # action 3 code 11
+PHASE_0 = 0  # action 0 code 0000
+PHASE_1 = 1  # action 0 code 0001
+PHASE_2 = 2  # action 1 code 0010
+PHASE_3 = 3  # action 1 code 0011
+PHASE_4 = 4  # action 2 code 0100
+PHASE_5 = 5  # action 2 code 0101
+PHASE_6 = 6  # action 3 code 0110
+PHASE_7 = 7  # action 3 code 0111
+PHASE_8 = 8  # action 4 code 1000
+PHASE_9 = 9  # action 4 code 1001
+PHASE_10 = 10  # action 5 code 1010
+PHASE_11 = 11  # action 5 code 1011
+PHASE_12 = 12  # action 6 code 1100
+PHASE_13 = 13  # action 6 code 1101
+PHASE_14 = 14  # action 7 code 1110
+PHASE_15 = 15  # action 7 code 1111
 
 
 
@@ -141,7 +142,7 @@ class Simulation:
                 self._waiting_times[car_id] = wait_time
             else:
                 if car_id in self._waiting_times: # a car that was tracked has cleared the intersection
-                    del self._waiting_times[car_id] 
+                    del self._waiting_times[car_id]
         total_waiting_time = sum(self._waiting_times.values())
         return total_waiting_time
 
