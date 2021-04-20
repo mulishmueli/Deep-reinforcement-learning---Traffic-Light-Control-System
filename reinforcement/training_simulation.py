@@ -5,22 +5,16 @@ import timeit
 import os
 
 # phase codes based on environment.net.xml
-PHASE_0 = 0  # action 0 code 0000
-PHASE_1 = 1  # action 0 code 0001
-PHASE_2 = 2  # action 1 code 0010
-PHASE_3 = 3  # action 1 code 0011
-PHASE_4 = 4  # action 2 code 0100
-PHASE_5 = 5  # action 2 code 0101
-PHASE_6 = 6  # action 3 code 0110
-PHASE_7 = 7  # action 3 code 0111
-PHASE_8 = 8  # action 4 code 1000
-PHASE_9 = 9  # action 4 code 1001
-PHASE_10 = 10  # action 5 code 1010
-PHASE_11 = 11  # action 5 code 1011
-PHASE_12 = 12  # action 6 code 1100
-PHASE_13 = 13  # action 6 code 1101
-PHASE_14 = 14  # action 7 code 1110
-PHASE_15 = 15  # action 7 code 1111
+PHASE_0 = 0
+PHASE_1 = 1
+PHASE_2 = 2
+PHASE_3 = 3
+PHASE_4 = 4
+PHASE_5 = 5
+PHASE_6 = 6
+PHASE_7 = 7
+PHASE_8 = 8
+PHASE_9 = 9
 
 
 
@@ -179,12 +173,7 @@ class Simulation:
             traci.trafficlight.setPhase("TL", PHASE_6)
         elif action_number == 4:
             traci.trafficlight.setPhase("TL", PHASE_8)
-        elif action_number == 5:
-            traci.trafficlight.setPhase("TL", PHASE_10)
-        elif action_number == 6:
-            traci.trafficlight.setPhase("TL", PHASE_12)
-        elif action_number == 7:
-            traci.trafficlight.setPhase("TL", PHASE_14)
+
 
     def _get_queue_length(self):
         """
