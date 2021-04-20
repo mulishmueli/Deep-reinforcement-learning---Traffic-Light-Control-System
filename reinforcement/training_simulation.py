@@ -20,11 +20,7 @@ PHASE_11 = 11
 PHASE_12 = 12  # action 2 code 10
 PHASE_13 = 13
 PHASE_14 = 14  # action 3 code 11
-PHASE_15 = 15
-PHASE_16 = 16  # action 0 code 00
-PHASE_17 = 17
-PHASE_18 = 18  # action 1 code 01
-PHASE_19 = 19  # action 1 code 01
+
 
 
 class Simulation:
@@ -188,11 +184,6 @@ class Simulation:
             traci.trafficlight.setPhase("TL", PHASE_12)
         elif action_number == 7:
             traci.trafficlight.setPhase("TL", PHASE_14)
-        elif action_number == 8:
-            traci.trafficlight.setPhase("TL", PHASE_16)
-        elif action_number == 9:
-            traci.trafficlight.setPhase("TL", PHASE_18)
-
 
     def _get_queue_length(self):
         """
