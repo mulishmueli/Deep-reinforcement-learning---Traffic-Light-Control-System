@@ -5,14 +5,16 @@ import timeit
 import os
 
 # phase codes based on environment.net.xml
-PHASE_NS_GREEN = 0  # action 0 code 00
-PHASE_NS_YELLOW = 1
-PHASE_NSL_GREEN = 2  # action 1 code 01
-PHASE_NSL_YELLOW = 3
-PHASE_EW_GREEN = 4  # action 2 code 10
-PHASE_EW_YELLOW = 5
-PHASE_EWL_GREEN = 6  # action 3 code 11
-PHASE_EWL_YELLOW = 7
+PHASE_0 = 0
+PHASE_1 = 1
+PHASE_2 = 2
+PHASE_3 = 3
+PHASE_4 = 4
+PHASE_5 = 5
+PHASE_6 = 6
+PHASE_7 = 7
+PHASE_8 = 8
+PHASE_9 = 9
 
 
 class Simulation:
@@ -137,13 +139,15 @@ class Simulation:
 
 
         if action_number == 0:
-            traci.trafficlight.setPhase("TL", PHASE_NS_GREEN)
+            traci.trafficlight.setPhase("TL", PHASE_0)
         elif action_number == 1:
-            traci.trafficlight.setPhase("TL", PHASE_NSL_GREEN)
+            traci.trafficlight.setPhase("TL", PHASE_2)
         elif action_number == 2:
-            traci.trafficlight.setPhase("TL", PHASE_EW_GREEN)
+            traci.trafficlight.setPhase("TL", PHASE_4)
         elif action_number == 3:
-            traci.trafficlight.setPhase("TL", PHASE_EWL_GREEN)
+            traci.trafficlight.setPhase("TL", PHASE_6)
+        elif action_number == 4:
+            traci.trafficlight.setPhase("TL", PHASE_8)
 
 
     def _get_queue_length(self):
@@ -194,21 +198,21 @@ class Simulation:
 
             # finding the lane where the car is located 
             # x2TL_3 are the "turn left only" lanes
-            if lane_id == "W2TL_0" or lane_id == "W2TL_1" or lane_id == "W2TL_2":
+            if lane_id == "W2TL_1" or lane_id == "W2TL_2":
                 lane_group = 0
             elif lane_id == "W2TL_3":
                 lane_group = 1
-            elif lane_id == "N2TL_0" or lane_id == "N2TL_1" or lane_id == "N2TL_2":
+            elif lane_id == "N2TL_1" :
                 lane_group = 2
-            elif lane_id == "N2TL_3":
+            elif lane_id == "N2TL_2":
                 lane_group = 3
-            elif lane_id == "E2TL_0" or lane_id == "E2TL_1" or lane_id == "E2TL_2":
+            elif lane_id == "E2TL_1" or lane_id == "E2TL_2":
                 lane_group = 4
             elif lane_id == "E2TL_3":
                 lane_group = 5
-            elif lane_id == "S2TL_0" or lane_id == "S2TL_1" or lane_id == "S2TL_2":
+            elif lane_id == "S2TL_1":
                 lane_group = 6
-            elif lane_id == "S2TL_3":
+            elif lane_id == "S2TL_2":
                 lane_group = 7
             else:
                 lane_group = -1
