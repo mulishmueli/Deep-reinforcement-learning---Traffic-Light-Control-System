@@ -6,14 +6,13 @@ from shutil import copyfile
 
 from testing_simulation_standard import Simulation_standard
 from generator import TrafficGenerator
-from model import TestModel
 from visualization import Visualization
-from utils import import_test_configuration, set_sumo, set_test_path
+from utils import import_test_configuration, set_sumo
 
 
 if __name__ == "__main__":
 
-    config = import_test_configuration(config_file='testing_settings.ini')
+    config = import_test_configuration(config_file='testing_settings_standard.ini')
     sumo_cmd = set_sumo(config['gui'], config['sumocfg_file_name'], config['max_steps'])
     plot_path = os.path.join(os.path.join(os.getcwd(), config['models_path_name'], 'model_'+str(config['model_to_test']), ''), 'test_standard', '')
     os.makedirs(os.path.dirname(plot_path), exist_ok=True)

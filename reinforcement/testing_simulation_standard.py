@@ -1,8 +1,5 @@
 import traci
-import numpy as np
-import random
 import timeit
-import os
 
 
 class Simulation_standard:

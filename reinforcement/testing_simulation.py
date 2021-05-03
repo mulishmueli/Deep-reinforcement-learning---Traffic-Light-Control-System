@@ -62,20 +62,23 @@ class Simulation:
             # choose the light phase to activate, based on the current state of the intersection
             action = self._choose_action(current_state)
 
-            # if the chosen phase is different from the last phase, activate the yellow phase
+            # if the chosen phase is different from the last phase, activate the yellow phase and save  accumulate reward
             if self._step != 0 and old_action != action:
                 self._set_yellow_phase(old_action)
                 self._simulate(self._yellow_duration)
+                for i in range(0, self._yellow_duration):
+                    self._reward_episode.append(reward)
 
             # execute the phase selected before
             self._set_green_phase(action)
             self._simulate(self._green_duration)
-
-            # saving variables for later & accumulate reward
+            for i in range (0,self._green_duration)  :
+                self._reward_episode.append(reward)
+            # saving variables for later
             old_action = action
             old_total_wait = current_total_wait
 
-            self._reward_episode.append(reward)
+
 
         #print("Total reward:", np.sum(self._reward_episode))
         traci.close()
