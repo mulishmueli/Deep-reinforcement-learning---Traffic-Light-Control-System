@@ -80,9 +80,9 @@ def detect(save_img=False):
         # Inference
         t1 = time_synchronized()
         pred = model(img, augment=opt.augment)[0]
-
+        #bus-0,car-1,motorcycle-2,person-3,truck-4
         # Apply NMS
-        pred = non_max_suppression(pred, opt.conf_thres, opt.iou_thres, classes=(0,2,3,5,7), agnostic=opt.agnostic_nms)#classes=opt.classes
+        pred = non_max_suppression(pred, opt.conf_thres, opt.iou_thres, classes=(0,1,2,3,4), agnostic=opt.agnostic_nms)#classes=opt.classes
         t2 = time_synchronized()
 
         # Apply Classifier
@@ -101,10 +101,10 @@ def detect(save_img=False):
                 for c in det[:, -1].unique():
                     n = (det[:, -1] == c).sum()  # detections per class
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
-                    if (c==0) :
+                    if (c==3) :
                         total_person= int(n)
                     else :
-                        if ((c== 2) or(c== 3) or(c== 5) or (c== 7)):
+                        if ((c== 0) or(c== 1) or(c== 2) or (c== 4)):
                             total_vehicle= int(n)+total_vehicle
                 # Write results
                 cur_frame_axies = []
@@ -112,7 +112,7 @@ def detect(save_img=False):
                 for *xyxy, conf, cls in reversed(det):
                     x=int(xyxy[0])
                     y=int(xyxy[1])
-                    if ((cls== 2) or(cls== 3) or(cls== 5) or (cls== 7)):
+                    if ((cls== 0) or(cls== 1) or(cls== 2) or (cls== 4)):
                         if ((x < 318) and (y > 300) and (y < 460)):
                             road_a = road_a + 1
                         else:
@@ -166,13 +166,13 @@ def detect(save_img=False):
             fps=1/(t2 - t1)
 
             print(f'{s}Done. ({t2 - t1:.3f}s)')
-            cv2.putText(im0, f'FPS- {fps:.0f}  ', (50, 30), cv2.FONT_HERSHEY_SIMPLEX, 1,
+            cv2.putText(im0, f'FPS- {fps:.0f}  ', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1,
                         (0, 255, 255), 2,
                         cv2.LINE_4)
-            cv2.putText(im0, f'count of vehicle- {total_vehicle}  ', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1,
+            cv2.putText(im0, f'count of vehicle- {total_vehicle}  ', (50, 120), cv2.FONT_HERSHEY_SIMPLEX, 1,
                         (0, 255, 255), 2,
                         cv2.LINE_4)
-            cv2.putText(im0, f'count of person- {total_person}  ', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1,
+            cv2.putText(im0, f'count of person- {total_person}  ', (50, 140), cv2.FONT_HERSHEY_SIMPLEX, 1,
                         (0, 255, 255), 2,
                         cv2.LINE_4)
             cv2.putText(im0, f' ROAD A- {road_a}  ', (50, 190), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2,
@@ -186,14 +186,14 @@ def detect(save_img=False):
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
-                cv2.waitKey(40)  # 1 millisecond
+               # cv2.waitKey(1)  # 1 millisecond
                 #time.sleep(0.06)
 
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default='yolov5s.pt', help='model.pt path(s)')
+    parser.add_argument('--weights', nargs='+', type=str, default='0.005.pt', help='model.pt path(s)')
     parser.add_argument('--source', type=str, default="https://5e0d15ab12687.streamlock.net/live/AHISEMECH.stream/chunklist_w1349241609.m3u8", help='source')  # file/folder, 0 for webcam
     #parser.add_argument('--source', type=str,default="0",help='source')  # file/folder, 0 for webcam
     parser.add_argument('--img-size', type=int, default=640, help='inference size (pixels)')
