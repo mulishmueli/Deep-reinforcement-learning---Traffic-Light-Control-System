@@ -1,8 +1,9 @@
-# Deep Q-Learning Agent for Traffic Signal Control - still in progress
+# Deep Q-Learning Agent for Traffic Signal Control 
 
 ## The code structure
 
 The main file is **training_main.py**. It handles the main loop that starts an episode on every iteration. It also saves the network weights and three plots: negative reward, cumulative wait time, and average queues. 
+
 
 ## The settings explained
 
