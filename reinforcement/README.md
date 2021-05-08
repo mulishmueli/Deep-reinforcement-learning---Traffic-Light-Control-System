@@ -8,7 +8,7 @@ The main file is **training_main.py**. It handles the main loop that starts an e
 ## The settings explained
 
 The settings used during the training and contained in the file **training_settings.ini** are the following:
-- gui: enable or disable the SUMO interface during the simulation.
+- **gui**: enable or disable the SUMO interface during the simulation.
 - **total_episodes**: the number of episodes that are going to be run.
 - **max_steps**: the duration of each episode, with 1 step = 1 second (default duration in SUMO).
 - **n_cars_generated**: the number of cars that are generated during a single episode.
