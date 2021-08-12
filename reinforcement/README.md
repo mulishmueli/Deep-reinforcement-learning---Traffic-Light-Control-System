@@ -4,6 +4,8 @@
 
 The main file is **training_main.py**. It handles the main loop that starts an episode on every iteration. It also saves the network weights and three plots: negative reward, cumulative wait time, and average queues. 
 
+video of the project: https://drive.google.com/file/d/12JNAHk-n9ckJmMTq8KDu9zQPQGcrc5MC/view?usp=sharing
+
 
 ## The settings explained
 
